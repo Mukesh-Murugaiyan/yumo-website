@@ -1,26 +1,214 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Canela';
+  src: url('/fonts/Canela-Regular.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mier';
+  src: url('/fonts/MierA-Book.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 270 50% 98%;
+  --foreground: 265 40% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 265 40% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 265 40% 12%;
+  
+  /* YUMO Primary Brand Purple & Gradient Tokens */
+  --primary: 261 42% 44%; /* #62419F */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 265 40% 96%; /* #F5F0FB */
+  --secondary-foreground: 261 42% 40%;
+  --muted: 265 30% 95%;
+  --muted-foreground: 265 15% 45%;
+  --accent: 160 84% 39%; /* Mint Success */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 265 25% 91%;
+  --input: 265 25% 91%;
+  --ring: 261 42% 44%;
+  --radius: 1.25rem;
+  
+  /* Exact YUMO Hex Tokens from Splash Screen */
+  --yumo-violet-deep: #62419F;
+  --yumo-purple-royal: #7153A8;
+  --yumo-orchid: #8B6EBF;
+  --yumo-amethyst: #997BC6;
+  --yumo-lavender-bloom: #C3AFE0;
+  --yumo-lilac-mist: #DACFE9;
+  --yumo-cream-mist: #FAF7FD;
+  --yumo-dark: #1C132B;
+  
+  --yumo-gradient-primary: linear-gradient(135deg, #62419F 0%, #8B6EBF 50%, #C3AFE0 100%);
+  --yumo-gradient-vertical: linear-gradient(180deg, #62419F 0%, #8164B6 35%, #997BC6 65%, #DACFE9 100%);
+  --yumo-gradient-soft: linear-gradient(180deg, rgba(98, 65, 159, 0.08) 0%, rgba(139, 110, 191, 0.05) 50%, rgba(218, 207, 233, 0.12) 100%);
+
+  /* Centralized Global Background Token from "Get Yumocare" button (#62419F to #8B6EBF) */
+  --yumo-primary-background: linear-gradient(to right, #62419F, #8B6EBF);
+
+  --font-heading: 'Canela', Georgia, serif;
+  --font-body: 'Mier', system-ui, -apple-system, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --font-heading: 'Canela', Georgia, serif;
+  --font-body: 'Mier', system-ui, -apple-system, sans-serif;
+  --color-background: #62419F;
+  --color-foreground: #FFFFFF;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1C132B;
+  --color-primary: #62419F;
+  --color-primary-hover: #52318E;
+  --color-violet: #62419F;
+  --color-purple: #7153A8;
+  --color-orchid: #8B6EBF;
+  --color-amethyst: #997BC6;
+  --color-lavender: #C3AFE0;
+  --color-lilac: #DACFE9;
+  --color-mint: #10B981;
+  --color-mint-light: #ECFDF5;
+  --color-amber: #F59E0B;
+  --color-border: #EFE9F6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  font-family: 'Mier', system-ui, -apple-system, sans-serif;
+  color: #1C132B;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to right, #62419F, #8B6EBF) !important;
+  background: var(--yumo-primary-background) !important;
+  background-attachment: fixed !important;
+  color: #1C132B;
+  font-family: 'Mier', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg-yumo-primary-bg {
+  background: linear-gradient(to right, #62419F, #8B6EBF) !important;
+  background: var(--yumo-primary-background) !important;
+}
+
+.font-heading {
+  font-family: 'Canela', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Mier', system-ui, -apple-system, sans-serif;
+}
+
+/* Polished Initial-Load Keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0px);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Hero 3-Screen Staggered Reveal Animation */
+@keyframes heroScreenReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.animate-hero-screen {
+  animation: heroScreenReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-hero-screen {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Custom Purple Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(98, 65, 159, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(98, 65, 159, 0.45);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
